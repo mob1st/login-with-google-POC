@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "510254954490",
+    "project_id": "sinuous-tuner-357509",
+    "storage_bucket": "sinuous-tuner-357509.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510254954490:android:8026ad16f17add2542d643",
+        "android_client_info": {
+          "package_name": "br.com.mob1st.bet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "510254954490-ete44e56objpg7hvg1bk6d64e7kutlv5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAy-Uybtt1hhi_4s_74e5whW4f0pQ15GlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "510254954490-ete44e56objpg7hvg1bk6d64e7kutlv5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510254954490:android:bb9f520f2c4f03ed42d643",
+        "android_client_info": {
+          "package_name": "com.example.login_poc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "510254954490-ete44e56objpg7hvg1bk6d64e7kutlv5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAy-Uybtt1hhi_4s_74e5whW4f0pQ15GlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "510254954490-ete44e56objpg7hvg1bk6d64e7kutlv5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
