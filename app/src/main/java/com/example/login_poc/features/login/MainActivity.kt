@@ -37,6 +37,7 @@ class MainActivity : ComponentActivity() {
         NavHost(navController = navController, startDestination = "login", builder = {
             composable("login", content = { LoginScreen(auth = auth, navController = navController)})
             composable("home", content = { HomeScreen(navController)})
+            composable("profile", content = { ProfileScreen(navController) })
         })
     }
 }

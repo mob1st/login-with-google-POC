@@ -21,6 +21,9 @@ import com.example.login_poc.features.home.HomeScreen
 import com.example.login_poc.features.login.LoginScreen
 import com.example.login_poc.features.profile.ProfileScreen
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -36,7 +39,7 @@ fun BottomBarNavigation() {
 
 @Composable
 fun BottomNavGraph(navController: NavHostController) {
-    NavHost(navController, startDestination = BottomBarData.Login.route) {
+    NavHost(navController, startDestination = "login") {
         composable(route = BottomBarData.Home.route) {
             HomeScreen(navController)
         }

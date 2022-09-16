@@ -22,10 +22,4 @@ sealed class BottomBarData(
         title = "Profile",
         icon = Icons.Default.Person
     )
-
-    object Login : BottomBarData(
-        route = "login",
-        title = "Login",
-        icon = Icons.Default.Login
-    )
 }
