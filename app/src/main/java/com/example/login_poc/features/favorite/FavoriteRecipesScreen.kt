@@ -1,4 +1,4 @@
-package com.example.login_poc.features.profile
+package com.example.login_poc.features.favorite
 
 import InfoTemplate
 import android.annotation.SuppressLint
@@ -9,7 +9,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.login_poc.features.bottomBarNavigation.BottomBar
 

@@ -5,6 +5,8 @@ import android.util.Log
 import android.util.Patterns
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +14,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
@@ -44,13 +47,10 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.login_poc.featureLogin.R
-import com.example.login_poc.features.bottomBarNavigation.BottomBarNavigation
 import com.example.login_poc.ui.theme.Sun202
 import com.google.firebase.auth.FirebaseAuth
 
@@ -82,12 +82,15 @@ fun LoginScreen(
         mutableStateOf(false)
     }
 
+    val scrollState = rememberScrollState()
+
     Column(
         modifier = Modifier
             .background(color = Color.White)
-            .fillMaxSize(),
+            .fillMaxSize()
+            .scrollable(state = scrollState, orientation = Orientation.Vertical),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top
+        verticalArrangement = Arrangement.Top,
     ) {
         Image(
             imageVector = ImageVector.vectorResource(id = R.drawable.orayo),
@@ -119,7 +122,9 @@ fun LoginScreen(
             ),
             trailingIcon = {
                 if (email.isNotBlank()) {
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = {
+                        email = ""
+                    }) {
                         Icon(imageVector = Icons.Filled.Clear, contentDescription = "Clear email")
                     }
                 }
@@ -135,9 +140,12 @@ fun LoginScreen(
             onValueChange = { password = it },
             label = { Text(text = "Password") },
             singleLine = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password,
+                imeAction = ImeAction.Done
+            ),
             keyboardActions = KeyboardActions(
-                onNext = { focusManager.clearFocus() }
+                onDone = { focusManager.clearFocus() }
             ),
             trailingIcon = {
                 IconButton(onClick = { isPasswordVisible = !isPasswordVisible }) {
@@ -197,10 +205,4 @@ fun LoginScreen(
             )
         }
     }
-}
-
-@Preview
-@Composable
-fun LoginButtonPreview() {
-    //LoginUI(FirebaseAuth.getInstance())
 }
