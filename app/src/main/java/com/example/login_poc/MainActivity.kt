@@ -1,18 +1,20 @@
-package com.example.login_poc.features.login
+package com.example.login_poc
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.login_poc.di.mainModule
-import com.example.login_poc.features.recipe.HomeScreen
+import com.example.login_poc.core.mainModule
+//import com.example.login_poc.di.mainModule
+import com.example.login_poc.features.recipesList.RecipesScreen
 import com.example.login_poc.features.favorite.ProfileScreen
-import com.example.login_poc.features.recipe.RecipeViewModel
+import com.example.login_poc.features.login.LoginScreen
+import com.example.login_poc.features.recipeDetails.RecipeDetailsScreen
+import com.example.login_poc.features.recipeDetails.RecipeDetailsViewModel
+import com.example.login_poc.features.recipesList.RecipeViewModel
 import com.example.login_poc.ui.theme.LoginpocTheme
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -32,7 +34,6 @@ class MainActivity : ComponentActivity() {
         startKoin {
             androidLogger()
             androidContext(this@MainActivity)
-
             modules(mainModule)
         }
 
@@ -46,12 +47,19 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun Application() {
         val navController = rememberNavController()
-        val viewModel = getViewModel<RecipeViewModel>()
+        val recipeViewModel = getViewModel<RecipeViewModel>()
+        val recipeDetailsViewModel = getViewModel<RecipeDetailsViewModel>()
 
         NavHost(navController = navController, startDestination = "login", builder = {
-            composable("login", content = { LoginScreen(auth = auth, navController = navController)})
-            composable("home", content = { HomeScreen(navController, viewModel)})
+            composable("login", content = { LoginScreen(auth = auth, navController = navController) })
+            composable("home", content = { RecipesScreen(navController, recipeViewModel)})
             composable("profile", content = { ProfileScreen(navController) })
+            composable("recipeDetails/{id}") {
+                val recipeId = it.arguments?.getString("id")
+                recipeId?.let {
+                    RecipeDetailsScreen( recipeDetailsViewModel,id = recipeId.toInt())
+                }
+            }
         })
     }
 }

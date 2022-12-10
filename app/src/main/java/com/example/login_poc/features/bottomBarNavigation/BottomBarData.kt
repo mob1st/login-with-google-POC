@@ -23,3 +23,9 @@ sealed class BottomBarData(
         icon = Icons.Default.Person
     )
 }
+
+sealed class AppRouteDestination(val route: String) {
+    object RecipeDetails: AppRouteDestination(
+        route = "recipeDetails/{id}"
+    )
+}

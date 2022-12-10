@@ -1,7 +1,5 @@
 package com.example.login_poc.util
 
-import com.example.login_poc.features.recipe.data.FoodRecipeRepository
-
 class Constants {
     companion object {
         const val BASE_URL = "https://api.spoonacular.com/"
